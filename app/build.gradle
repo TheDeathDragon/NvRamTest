@@ -1,0 +1,57 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    signingConfigs {
+        debug {
+            storeFile file('E:\\Projects\\Apps\\NvRamTest\\app\\platform.keystore')
+            keyAlias 'android'
+        }
+        release {
+            storeFile file('E:\\Projects\\Apps\\NvRamTest\\app\\platform.keystore')
+            keyAlias 'android'
+        }
+    }
+    namespace 'la.shiro.nvramtest'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "la.shiro.nvramtest"
+        minSdk 31
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            // 名称_时间.apk
+            // outputFileName = "demo_${releaseTime()}.apk"
+            outputFileName = "NvRamTest.apk"
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation files('libs/nvram.jar')
+    compileOnly files('libs/framework.jar')
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+}
