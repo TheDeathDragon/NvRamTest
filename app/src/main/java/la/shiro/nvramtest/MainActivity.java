@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String mRandomWifiMac = getRandomWifiMac();
                 Log.d(TAG, "onClick() : " + mRandomWifiMac);
                 if (updateWifiMac(mRandomWifiMac) && getWifiMacFromNvRam().equalsIgnoreCase(mRandomWifiMac)) {
-                    tv_wifi_mac.setText("Set WiFi MAC : " + wifiMac);
+                    tv_wifi_mac.setText("Set WiFi MAC : " + mRandomWifiMac);
                 } else {
                     tv_wifi_mac.setText("Set WiFi MAC : Failed\ngetWifiMacFromNvRam() : " + getWifiMacFromNvRam() + " mRandomWifiMac : " + mRandomWifiMac);
                 }
